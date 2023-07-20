@@ -2,7 +2,7 @@ name: Go
 on:
   push:
     branches:
-      - master
+      - main
     tags:
       - v*
   pull_request:
@@ -71,7 +71,7 @@ jobs:
           VCS_REF=${{ github.sha }}
           VCS_URL=https://github.com/${{ github.repository }}
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          [ "$VERSION" == "master" ] && VERSION=rc
+          [ "$VERSION" == "main" ] && VERSION=rc
           docker build . \
             --build-arg BUILD_DATE=$BUILD_DATE \
             --build-arg VCS_REF=$VCS_REF \
